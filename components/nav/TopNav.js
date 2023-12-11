@@ -13,7 +13,12 @@ export default function TopNav() {
 
       {status === 'authenticated' ? (
         <div className='d-flex justify-content-end'>
-          <Link href='/dashboard/user' className='nav-link'>
+          <Link
+            href={`/dashboard/${
+              data?.user?.role === 'admin' ? 'admin' : 'user'
+            }`}
+            className='nav-link'
+          >
             {data?.user?.name} ({data?.user?.role})
           </Link>
           <a
