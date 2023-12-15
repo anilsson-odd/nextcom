@@ -25,7 +25,7 @@ export const CategoryProvider = ({ children }) => {
       const data = await response.json();
 
       if (!response.ok) {
-        toast.error(data.err);
+        toast.error(data);
       } else {
         toast.success('Category created');
         setName('');
@@ -43,7 +43,7 @@ export const CategoryProvider = ({ children }) => {
       const data = await response.json();
 
       if (!response.ok) {
-        toast.error(data.err);
+        toast.error(data);
       } else {
         setCategories(data);
       }
@@ -62,14 +62,14 @@ export const CategoryProvider = ({ children }) => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ name }),
+          body: JSON.stringify(updatingCategory),
         }
       );
 
       const data = await response.json();
 
       if (!response.ok) {
-        toast.error(data.err);
+        toast.error(data);
       } else {
         toast.success('Category updated');
         setCategories(
@@ -97,7 +97,7 @@ export const CategoryProvider = ({ children }) => {
       const data = await response.json();
 
       if (!response.ok) {
-        toast.error(data.err);
+        toast.error(data);
       } else {
         toast.success('Category deleted');
         setCategories(
@@ -118,6 +118,8 @@ export const CategoryProvider = ({ children }) => {
         setName,
         categories,
         setCategories,
+        updatingCategory,
+        setUpdatingCategory,
         createCategory,
         fetchCategories,
         updateCategory,
