@@ -6,6 +6,7 @@ import { Toaster } from 'react-hot-toast';
 import { SessionProvider } from 'next-auth/react';
 import { CategoryProvider } from '@/context/category';
 import { TagProvider } from '@/context/tag';
+import { ProductProvider } from '@/context/product';
 
 export default function RootLayout({ children }) {
   return (
@@ -13,11 +14,13 @@ export default function RootLayout({ children }) {
       <SessionProvider>
         <CategoryProvider>
           <TagProvider>
-            <body>
-              <TopNav />
-              <Toaster />
-              {children}
-            </body>
+            <ProductProvider>
+              <body>
+                <TopNav />
+                <Toaster />
+                {children}
+              </body>
+            </ProductProvider>
           </TagProvider>
         </CategoryProvider>
       </SessionProvider>
